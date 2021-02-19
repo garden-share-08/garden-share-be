@@ -1,0 +1,17 @@
+language: ruby
+rbenv:
+- 2.5.3
+addons:
+  postgresql: 9.6
+script:
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: 1NfUuu+jPbjIO1j8h8qJgkvHW+1qUA8xfPQUFoDoCwtJeatSEuDui0D0BuvKLb/Ngg11diSo9x7zJmOAUL/r0nMZoJF6O01xTaDMgVgY78QnScPRSJUfzibBBIEATrxXGGLzJkKfEtVTBcQP72NcgPhc3fn1R7dwPL1nR8TRggBC4zkJm5d6g+63fvv0K4hJi5QpnSpB1EjFBrU8VzF1MDyCcf1vo1quG3dpF9qsS9fm2P9MosgccIF5ZXrcm0b0l3Si/l9JzwPLP0bc7dUP4N3BE5CFR7ihUjMkXuhiRUsi/hobN0TsMt3qOTdybMpBVSL/bVOf//KRD0j5FJoniOGrn/4Lr7IPcRughZmc9EkeOjfLtgt+bENAwDc1tjCe6Mz6x+N+SilrMCYmTEfSYzWtOQmXTO5zRznoxbWkzCd7x4Wkq6iZDylmdeMZmNd8Qs+uDd8fBOXVUECOLnTPoRdsAXVDDis20q1m+g/1e9njVs0yPim2ZjE9ZTwGaFAcv2Aa8hk5OnFu2XphGfvQhrE+jAe6vLECUo6Dm62tqHH5Vfryt6aSLsoP4svdTnxMFyWREp5YPEmP4yW4Lm0cX2pqOW/5osfWK8D5D54utldaJJEhMUgP/zEIo1iTrxjLOscYH78gBvyjk2acirhXmJ4LwEGOOXpJVHThANOuGVM=
+  app: garden-share-be
+  on:
+    repo: garden-share-08/garden-share-be
+    branch: main
+  skip_cleanup: 'true'
