@@ -38,6 +38,8 @@ group :development, :test do
   gem 'pry'
   gem 'travis'
   gem 'graphiql-rails'
+  gem 'faker'
+  gem 'factory_bot_rails'
 end
 
 group :development do
