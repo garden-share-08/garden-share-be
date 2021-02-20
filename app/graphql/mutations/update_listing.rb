@@ -18,7 +18,7 @@ module Mutations
       error = []
       begin
         updated_listing = Listing.update(args[:id], args)
-      rescue ActiveRecord::RecordNotFound
+      rescue
         error << "Couldn't find Listing with 'id'=#{args[:id]}"
       end
 
