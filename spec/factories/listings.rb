@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :listing do
-    user_id { nil }
-    zip_code { "MyString" }
-    produce_name { "MyString" }
-    produce_type { "MyString" }
-    description { "MyString" }
-    quantity { "" }
-    unit { "MyString" }
+    user 
+    zip_code { Faker::Address.zip }
+    produce_name { Faker::Food.vegetables }
+    produce_type { Faker::Food.fruits }
+    description { Faker::Food.description }
+    quantity { rand(1..10) }
+    unit { Faker::Food.metric_measurement }
     date_harvested { "2021-02-20 08:27:22" }
-    status { "MyString" }
+    status { "pending" }
   end
 end
