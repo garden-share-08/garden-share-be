@@ -9,5 +9,15 @@ FactoryBot.define do
     unit { 'lbs' }
     date_harvested { "2021-02-20 08:27:22" }
     status { "pending" }
+
+    factory :listing_with_offers do 
+      transient do 
+        offer_count { 3 }
+      end
+
+      after(:create) do |listing, evaluator|
+        create_list(:offer, evaluator.offer_count, listing: listing)
+      end
+    end   
   end
 end

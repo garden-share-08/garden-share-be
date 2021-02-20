@@ -9,4 +9,5 @@ RSpec.describe Listing, type: :model do
   it { should validate_presence_of :date_harvested }
 
   it { should belong_to :user }
+  it { should have_many :offers }
 end
