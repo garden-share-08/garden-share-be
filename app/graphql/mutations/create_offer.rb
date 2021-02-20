@@ -15,18 +15,18 @@ module Mutations
     field :error, [String], null: false
 
     def resolve(args)
-      # new_offer = Offer.new(args)
-      # if new_offer.save
-      #   {
-      #     offer: new_offer,
-      #     error: []
-      #   }
-      # else
-      #   {
-      #     offer: new_offer,
-      #     error: new_offer.errors.full_messages
-      #   }
-      # end
+      new_offer = Offer.new(args)
+      if new_offer.save
+        {
+          offer: new_offer,
+          error: []
+        }
+      else
+        {
+          offer: new_offer,
+          error: new_offer.errors.full_messages
+        }
+      end
     end
   end
 end
