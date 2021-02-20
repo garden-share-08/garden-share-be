@@ -4,6 +4,7 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :fetch_produce, resolver: Queries::FetchProduce
+    field :fetch_all_produce, resolver: Queries::FetchAllProduce
+    field :fetch_produce_by_name, resolver: Queries::FetchProduceByName
   end
 end
