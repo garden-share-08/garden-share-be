@@ -3,5 +3,6 @@ module Types
     field :create_user, mutation: Mutations::CreateUser
     field :create_listing, mutation: Mutations::CreateListing
     field :update_listing, mutation: Mutations::UpdateListing
+    field :create_offer, mutation: Mutations::CreateOffer
   end
 end

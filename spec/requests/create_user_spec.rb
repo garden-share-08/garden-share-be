@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-
-RSpec.describe 'backend createUser mutation request' do 
-  it 'creates a unique user' do 
+RSpec.describe 'backend createUser mutation request' do
+  it 'creates a unique user' do
     user = build(:user)
     query_string = <<-GRAPHQL
      mutation {
@@ -18,7 +17,7 @@ RSpec.describe 'backend createUser mutation request' do
     GRAPHQL
 
     post graphql_path, params: { query: query_string }
-    
+
     result = JSON.parse(response.body, symbolize_names: true)
     user_info = result[:data][:createUser][:user]
     error = result[:data][:createUser][:error]
@@ -29,7 +28,7 @@ RSpec.describe 'backend createUser mutation request' do
     expect(user_info[:email]).to eq(user.email)
   end
 
-  it 'does not create a user that already exists' do 
+  it 'does not create a user that already exists' do
     user = create(:user)
 
     query_string = <<-GRAPHQL
@@ -50,10 +49,10 @@ RSpec.describe 'backend createUser mutation request' do
     result = JSON.parse(response.body, symbolize_names: true)
     error = result[:data][:createUser][:error]
 
-    expect(error[0]).to eq("Email has already been taken") 
+    expect(error[0]).to eq("Email has already been taken")
   end
 
-  it 'does not create a user with missing fields' do 
+  it 'does not create a user with missing fields' do
     user = build(:user)
 
     query_string = <<-GRAPHQL

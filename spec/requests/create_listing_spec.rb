@@ -7,12 +7,12 @@ RSpec.describe 'backend createListing mutation request' do
     query_string = <<-GRAPHQL
      mutation {
        createListing(input: {
-        userId: #{user.id}, 
-        zipCode: "#{listing.zip_code}", 
-        produceName: "#{listing.produce_name}", 
-        produceType: "#{listing.produce_type}", 
-        description: "#{listing.description}", 
-        quantity: #{listing.quantity}, 
+        userId: #{user.id},
+        zipCode: "#{listing.zip_code}",
+        produceName: "#{listing.produce_name}",
+        produceType: "#{listing.produce_type}",
+        description: "#{listing.description}",
+        quantity: #{listing.quantity},
         unit: "#{listing.unit}",
         dateHarvested: "#{listing.date_harvested}"}) {
           listing {
@@ -47,17 +47,17 @@ RSpec.describe 'backend createListing mutation request' do
     expect(listing_info[:createdAt].to_datetime).to be_a(DateTime)
   end
 
-  it 'cannot create a listing when missing user_id' do 
+  it 'cannot create a listing when missing user_id' do
     user = create(:user)
     listing = create(:listing)
     query_string = <<-GRAPHQL
      mutation {
        createListing(input: {
-        zipCode: "#{listing.zip_code}", 
-        produceName: "#{listing.produce_name}", 
-        produceType: "#{listing.produce_type}", 
-        description: "#{listing.description}", 
-        quantity: #{listing.quantity}, 
+        zipCode: "#{listing.zip_code}",
+        produceName: "#{listing.produce_name}",
+        produceType: "#{listing.produce_type}",
+        description: "#{listing.description}",
+        quantity: #{listing.quantity},
         unit: "#{listing.unit}",
         dateHarvested: "#{listing.date_harvested}"}) {
           listing {
@@ -67,7 +67,7 @@ RSpec.describe 'backend createListing mutation request' do
         }
       }
     GRAPHQL
-    
+
     post graphql_path, params: { query: query_string }
 
     result = JSON.parse(response.body, symbolize_names: true)
@@ -76,19 +76,19 @@ RSpec.describe 'backend createListing mutation request' do
     expect(error[0]).to eq('User must exist')
   end
 
-  it 'can return a user object type' do 
+  it 'can return a user object type' do
     user = create(:user)
     listing = create(:listing)
-    
+
     query_string = <<-GRAPHQL
      mutation {
        createListing(input: {
-        userId: #{user.id}, 
-        zipCode: "#{listing.zip_code}", 
-        produceName: "#{listing.produce_name}", 
-        produceType: "#{listing.produce_type}", 
-        description: "#{listing.description}", 
-        quantity: #{listing.quantity}, 
+        userId: #{user.id},
+        zipCode: "#{listing.zip_code}",
+        produceName: "#{listing.produce_name}",
+        produceType: "#{listing.produce_type}",
+        description: "#{listing.description}",
+        quantity: #{listing.quantity},
         unit: "#{listing.unit}",
         dateHarvested: "#{listing.date_harvested}"}) {
           listing {
@@ -112,5 +112,4 @@ RSpec.describe 'backend createListing mutation request' do
     expect(user_info[:lastName]).to eq(user.last_name)
     expect(user_info[:email]).to eq(user.email)
   end
-
 end
