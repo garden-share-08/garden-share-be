@@ -5,5 +5,6 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :show_listing, resolver: Queries::ShowListing
+    field :get_listings, resolver: Queries::GetListings
   end
 end

@@ -4,8 +4,8 @@ module Queries
 
     argument :id, Integer, required: true 
 
-    field :error, [String], null: false 
     field :listing, Types::ListingType, null: true 
+    field :error, [String], null: false 
 
     def resolve(args)
       error = []
