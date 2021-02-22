@@ -9,5 +9,6 @@ module Types
     field :show_listing, resolver: Queries::ShowListing
     field :get_listings, resolver: Queries::GetListings
     field :get_user_listings, resolver: Queries::GetUserListings
+    field :get_user_offers, resolver: Queries::GetUserOffers
   end
 end
