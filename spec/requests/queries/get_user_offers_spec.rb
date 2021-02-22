@@ -196,4 +196,64 @@ RSpec.describe 'backend can respond with a user\'s offers and associated listing
   expect(listings).to be_empty 
   expect(error).to eq("Couldn't find any Offers for User with 'id'=#{non_id}")
   end
+
+  it 'returns offers from most recent to oldest' do 
+    user = create(:user)
+    listing_1 = create(:listing)
+    listing_2 = create(:listing)
+    listing_3 = create(:listing)
+    older_offer = create(:offer, user: user, listing: listing_1, created_at: (DateTime.now - 1.days), updated_at: (DateTime.now - 1.days))
+    newer_offer = create(:offer, user: user, listing: listing_2)
+    oldest_offer = create(:offer, user: user, listing: listing_3, created_at: (DateTime.now - 2.days), updated_at: (DateTime.now - 2.days))
+
+    query_string = <<-GRAPHQL
+    {
+      getUserOffers(id: #{user.id}) {
+        listings {
+          id 
+          produceName 
+          produceType
+          quantity
+          unit
+          dateHarvested
+          updatedAt
+          user {
+            id 
+            firstName
+          }
+          offers {
+            id
+            produceName
+            produceType
+            quantity
+            unit 
+            dateHarvested
+            updatedAt
+            user {
+              id
+              firstName
+            }
+          }
+        }
+        error
+      }
+    }
+    GRAPHQL
+
+    post graphql_path, params: { query: query_string }
+
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    listings = result[:data][:getUserOffers][:listings]
+    error = result[:data][:getUserOffers][:error]
+
+    result_offer_1 = listings[0][:offers][0]
+    result_offer_2 = listings[1][:offers][0]
+    result_offer_3 = listings[2][:offers][0]
+
+    expect(error).to be_empty
+    expect(result_offer_1[:id]).to eq(newer_offer.id)
+    expect(result_offer_2[:id]).to eq(older_offer.id)
+    expect(result_offer_3[:id]).to eq(oldest_offer.id)
+  end
 end

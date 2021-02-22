@@ -11,7 +11,7 @@ module Queries
       error = []
       listings = Listing.includes(offers: :user)
                         .where(offers: {users: {id: args[:id]}})
-                        .order("listings.updated_at DESC")
+                        .order("offers.updated_at DESC")
                         
       error << "Couldn't find any Offers for User with 'id'=#{args[:id]}" if listings.empty?
       {
