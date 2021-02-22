@@ -13,10 +13,11 @@ FactoryBot.define do
     factory :listing_with_offers do 
       transient do 
         offer_count { 3 }
+        offer_user  { user }
       end
 
       after(:create) do |listing, evaluator|
-        create_list(:offer, evaluator.offer_count, listing: listing)
+        create_list(:offer, evaluator.offer_count, listing: listing, user: evaluator.offer_user)
       end
     end   
   end
