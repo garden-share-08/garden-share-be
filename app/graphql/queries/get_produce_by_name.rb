@@ -1,5 +1,5 @@
 module Queries
-  class FetchProduceByName < Queries::BaseQuery
+  class GetProduceByName < Queries::BaseQuery
     argument :name, String, required: true
     field :produce, Types::ProduceType, null: false
     field :error, [String], null: false

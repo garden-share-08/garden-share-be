@@ -10,7 +10,7 @@ describe 'Produce Query' do
   it 'returns all produce' do
     query_string = <<-GRAPHQL
       query {
-        fetchAllProduce {
+        getAllProduce {
           produce {
             name
             image
@@ -22,9 +22,9 @@ describe 'Produce Query' do
 
     post graphql_path, params: { query: query_string }
     result = JSON.parse(response.body, symbolize_names: true)
-    capers = result[:data][:fetchAllProduce][:produce][0]
-    french_eschallots = result[:data][:fetchAllProduce][:produce][1]
-    lettuce = result[:data][:fetchAllProduce][:produce][2]
+    capers = result[:data][:getAllProduce][:produce][0]
+    french_eschallots = result[:data][:getAllProduce][:produce][1]
+    lettuce = result[:data][:getAllProduce][:produce][2]
 
     expect(capers[:name]).to eq("Capers")
     expect(french_eschallots[:name]).to eq("French eschallots")
@@ -34,11 +34,11 @@ describe 'Produce Query' do
     expect(lettuce[:image]).to eq("https://cdn.britannica.com/17/196817-050-6A15DAC3/vegetables.jpg")
   end
 
-  it "can fetch produce by name" do
+  it "can get produce by name" do
     produce_name = @produce1.name
     query_string = <<-GRAPHQL
       query {
-        fetchProduceByName(name:"#{produce_name}") {
+        getProduceByName(name:"#{produce_name}") {
           produce{
             name
             image
@@ -51,7 +51,7 @@ describe 'Produce Query' do
     post graphql_path, params: { query: query_string }
     result = JSON.parse(response.body, symbolize_names: true)
 
-    capers = result[:data][:fetchProduceByName][:produce]
+    capers = result[:data][:getProduceByName][:produce]
 
     expect(capers[:name]).to eq("Capers")
     expect(capers[:image]).to eq("https://cdn.britannica.com/17/196817-050-6A15DAC3/vegetables.jpg")
