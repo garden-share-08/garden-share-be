@@ -1,9 +1,14 @@
 module Queries
   class FetchAllProduce < Queries::BaseQuery
-     type [Types::ProduceType], null: false
+     field :produce, [Types::ProduceType], null: false
+     field :error, [String], null: false
 
      def resolve
-      Produce.all
+      produce = Produce.all
+      {
+        produce: produce,
+        error: []
+      }
      end
   end
 end
