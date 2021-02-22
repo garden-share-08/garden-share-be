@@ -28,15 +28,25 @@ RSpec.describe 'backend can return all listings' do
     
     expect(first_apple[:produce_name]).to eq('apples')
     expect(first_apple[:produce_type]).to be_a(String)
+    expect(first_apple[:description]).to be_a(String)
+    expect(first_apple[:date_harvested]).to be_a(String)
+    expect(first_apple[:status]).to be_a(String)
     expect(first_apple[:quantity]).to be_a(Integer)
     expect(first_apple[:unit]).to be_a(String)
     expect(first_apple[:zip_code]).to be_a(String)
+    expect(first_apple[:created_at]).to be_a(String)
+    expect(first_apple[:updated_at]).to be_a(String)
 
     expect(first_pepper[:produce_name]).to eq('peppers')
-    expect(first_pepper[:produce_type]).to be_a(String)
-    expect(first_pepper[:quantity]).to be_a(Integer)
-    expect(first_pepper[:unit]).to be_a(String)
-    expect(first_pepper[:zip_code]).to be_a(String)
+    expect(first_apple[:produce_type]).to be_a(String)
+    expect(first_apple[:description]).to be_a(String)
+    expect(first_apple[:date_harvested]).to be_a(String)
+    expect(first_apple[:status]).to be_a(String)
+    expect(first_apple[:quantity]).to be_a(Integer)
+    expect(first_apple[:unit]).to be_a(String)
+    expect(first_apple[:zip_code]).to be_a(String)
+    expect(first_apple[:created_at]).to be_a(String)
+    expect(first_apple[:updated_at]).to be_a(String)
   end
 
   it 'that have been posted for no longer than 72 hours' do 

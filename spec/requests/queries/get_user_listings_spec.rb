@@ -144,9 +144,7 @@ RSpec.describe 'backend returns a user\'s listings and its offers' do
     expect(error[0]).to eq("Couldn't find Listings for User with 'id'=#{user.id}")
   end
 
-  xit 'includes only offers with a pending or accepted status in the listing' do 
-    # Not sure if we want this test yet, so holding off on it for now 
-    
+  it 'includes only offers with a pending or accepted status in the listing' do 
     user = create(:user)
     listing = create(:listing, user: user)
     pending_offer = create(:offer, status: 'pending', listing: listing)
@@ -185,6 +183,7 @@ RSpec.describe 'backend returns a user\'s listings and its offers' do
     error = result[:data][:getUserListings][:error]
 
     expect(offers.count).to eq(2)
-    expect(offers).to_not include(declined_offer)
+    expect(offers[0][:status]).to_not eq('declined')
+    expect(offers[-1][:status]).to_not eq('declined')
   end
 end

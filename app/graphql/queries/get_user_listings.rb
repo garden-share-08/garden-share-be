@@ -10,8 +10,10 @@ module Queries
     def resolve(args)
       error = []
       begin
-        listings = Listing.where('user_id = ?', args[:id])
-                          .includes(offers: :user)
+        listings = Listing.includes(offers: :user)
+                          .where('listings.user_id = ?', args[:id])
+                          .where.not(offers: {status: 'declined'})
+                          
         error << "Couldn't find Listings for User with 'id'=#{args[:id]}" if listings.empty?
       rescue 
         error << 'Something went wrong when processing your request'
