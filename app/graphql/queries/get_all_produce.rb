@@ -1,5 +1,5 @@
 module Queries
-  class FetchAllProduce < Queries::BaseQuery
+  class GetAllProduce < Queries::BaseQuery
      field :produce, [Types::ProduceType], null: false
      field :error, [String], null: false
 
