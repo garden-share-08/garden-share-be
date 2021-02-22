@@ -1,5 +1,6 @@
 module Types
   class OfferType < Types::BaseObject
+    field :id, Integer, null: false
     field :user, Types::UserType, null: false
     field :listing, Types::ListingType, null: false
     field :produce_name, String, null: false
