@@ -45,7 +45,6 @@ We also use `PostgreSQL` as our database.
   - **Chadrick Dickerson** - *Turing Student* - [GitHub Profile](https://github.com/chadrick-d-dev) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/chadrick-dickerson) - [LinkedIn](https://www.linkedin.com/in/chadrick-dickerson/)
   - **Christopher Allbritton** - *Turing Student* - [GitHub Profile](https://github.com/Callbritton) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/christopher-allbritton) - [LinkedIn](https://www.linkedin.com/in/christopher-allbritton)
   - **Dani Coleman** - *Turing Student* - [GitHub Profile](https://github.com/dcoleman21) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/dani-coleman) - [LinkedIn](https://www.linkedin.com/in/dcoleman-21/)
-  - **Garrett Cottrell** - *Turing Student* - [GitHub Profile](https://github.com/GarrettCottrell) - [LinkedIn](https://www.linkedin.com/in/garrett-cottrell-52850834/)
   - **Joshua Carey** - *Turing Student* - [GitHub Profile](https://github.com/jdcarey128) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/joshua-carey) - [LinkedIn](https://www.linkedin.com/in/carey-joshua/)
 
   
