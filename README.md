@@ -4,7 +4,7 @@
 
 ## Overview
 
-This repository represents the backend portion of a capstone project for the Turing School of Software & Design. 
+This repository represents the backend portion of a capstone project for the Turing School of Software & Design.
 
 Garden-Share is an application designed to function as a produce swap meet...
 
@@ -47,7 +47,7 @@ We also use `PostgreSQL` as our database.
   - **Dani Coleman** - *Turing Student* - [GitHub Profile](https://github.com/dcoleman21) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/dani-coleman) - [LinkedIn](https://www.linkedin.com/in/dcoleman-21/)
   - **Joshua Carey** - *Turing Student* - [GitHub Profile](https://github.com/jdcarey128) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/joshua-carey) - [LinkedIn](https://www.linkedin.com/in/carey-joshua/)
 
-  
+
 
 
 
@@ -75,3 +75,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
+This will be deployed to Heroku. 
