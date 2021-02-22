@@ -1,10 +1,16 @@
 module Queries
   class FetchProduceByName < Queries::BaseQuery
-     type [Types::ProduceType], null: false
-     argument :name, String, required: true
+    argument :name, String, required: true
+    field :produce, Types::ProduceType, null: false
+    field :error, [String], null: false
+
 
      def resolve(args)
-      Produce.where(name: args[:name])
+      produce = Produce.find_by(name: args[:name])
+      {
+        produce: produce,
+        error: []
+      }
      end
   end
 end
