@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'backend acceptOffer mutation request' do
-  it "updates a listing status to accept" do
+  it "updates a listing and offer status to accepted" do
     seller = create(:user)
     listing = create(:listing, user_id: seller.id)
     buyer = create(:user)
