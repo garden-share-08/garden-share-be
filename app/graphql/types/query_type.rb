@@ -10,5 +10,6 @@ module Types
     field :get_listings, resolver: Queries::GetListings
     field :get_user_listings, resolver: Queries::GetUserListings
     field :get_user_offers, resolver: Queries::GetUserOffers
+    field :get_listing_status, resolver: Queries::GetListingStatus
   end
 end

@@ -5,5 +5,6 @@ module Types
     field :update_listing, mutation: Mutations::UpdateListing
     field :create_offer, mutation: Mutations::CreateOffer
     field :delete_listing, mutation: Mutations::DeleteListing 
+    field :delete_offer, mutation: Mutations::DeleteOffer
   end
 end
