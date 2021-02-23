@@ -8,13 +8,14 @@ RSpec.describe 'backend acceptOffer mutation request' do
     offer = create(:offer, user_id: buyer.id, listing_id: listing.id)
     query_string = <<-GRAPHQL
     mutation {
-      acceptOffer(id: #{offer.id}){
+      acceptOffer(input: {
+        id: #{offer.id}}) {
         listing {
-          id: #{listing.id},
-          status: "accepted"
-          offer {
-            id: #{offer.id},
-            status: "accepted"
+          id
+          status
+          offers {
+            id
+            status
           }
         }
         error
@@ -23,7 +24,14 @@ RSpec.describe 'backend acceptOffer mutation request' do
     GRAPHQL
 
     post graphql_path, params: { query: query_string }
-    require "pry"; binding.pry
     result = JSON.parse(response.body, symbolize_names: true)
+    updated_listing = result[:data][:acceptOffer][:listing]
+    updated_offer = updated_listing[:offers][0]
+
+    expect(updated_offer[:id]).to eq(offer.id)
+    expect(updated_offer[:status]).to eq("accepted")
+
+    expect(updated_listing[:status]).to eq("accepted")
+    expect(updated_listing[:id]).to eq(listing.id)
   end
 end
