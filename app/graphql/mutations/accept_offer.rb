@@ -3,32 +3,24 @@ module Mutations
     description "Change status of existing offer to accept"
 
     argument :id, Integer, required: true
-    argument :status, String, required: true
-    # argument :zip_code, String, required: false
-    # argument :produce_name, String, required: false
-    # argument :produce_type, String, required: false
-    # argument :description, String, required: false
-    # argument :quantity, Integer, required: false
-    # argument :unit, String, required: false
-    # argument :date_harvested, String, required: false
 
-    field :offer, Types::OfferType, null: true
     field :listing, Types::ListingType, null: true
     field :error, [String], null: false
 
     def resolve(args)
-      require "pry"; binding.pry
-    #   error = []
-    #   begin
-    #
-    #   rescue
-    #
-    #   end
-    #
-    #   {
-    #     
-    #     error: error
-    #   }
+      error = []
+      begin
+        accepted_offer = Offer.find(args[:id])
+        accepted_offer.update_attributes(status: "accepted")
+        accepted_offer.listing.update_attributes(status: "accepted")
+        listing = accepted_offer.listing
+      rescue
+        error << "Couldn't find Offer with 'id'=#{args[:id]}"
+      end
+      {
+        listing: listing,
+        error: error
+      }
     end
   end
 end
