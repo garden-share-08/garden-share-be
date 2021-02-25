@@ -11,6 +11,9 @@ RSpec.describe 'backend acceptOffer mutation request' do
       acceptOffer(input: {
         id: #{offer.id}}) {
         listing {
+          user {
+            id
+          }
           id
           status
           offers {
@@ -33,6 +36,7 @@ RSpec.describe 'backend acceptOffer mutation request' do
 
     expect(updated_listing[:status]).to eq("accepted")
     expect(updated_listing[:id]).to eq(listing.id)
+    expect(updated_listing[:user][:id]).to eq(seller.id)
 
     error = result[:data][:acceptOffer][:error]
     expect(error).to be_empty
