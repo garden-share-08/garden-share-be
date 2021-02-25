@@ -6,19 +6,27 @@ module Mutations
     argument :email, String, required: true
     
     field :user, Types::UserType, null: true
+    field :message, [String], null: false
     field :error, [String], null: false
     
     def resolve(args)
+      error = []
+      message = []
       new_user = User.new(args)
       if new_user.save 
         {
           user: new_user,
-          error: []
+          message: ["User created"],
+          error: error
         }
       else 
+          user = User.find_by(email: args[:email])
+          message = ["User already exists"] if user
+          error = new_user.errors.full_messages if user.nil?
         {
-          user: new_user,
-          error: new_user.errors.full_messages
+          user: user,
+          message: message,
+          error: error
         }
       end
     end
