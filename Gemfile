@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'figaro'
 gem 'faraday'
 gem 'graphql'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -38,7 +39,6 @@ group :development, :test do
   gem 'pry'
   gem 'travis'
   gem 'graphiql-rails'
-  gem 'faker'
   gem 'factory_bot_rails'
 end
 
