@@ -15,8 +15,8 @@ RSpec.describe 'LocationService' do
 
       result = LocationService.get_zip_codes(zip_code, radius)
 
-      expect(result[:error_code]).to eq('')
-      expect(result[:error_msg]).to eq('')
+      expect(result[:error_code]).to eq(nil)
+      expect(result[:error_msg]).to eq(nil)
       expect(result[:zip_codes]).to eq(expected_zip_codes)
     end 
 
@@ -25,7 +25,7 @@ RSpec.describe 'LocationService' do
       zip_code = "99999"
 
       error = {
-        zip_codes: "",
+        zip_codes: nil,
         error_code: 404,
         error_msg: "Zip code \"#{zip_code}\" not found."
       }
@@ -35,7 +35,7 @@ RSpec.describe 'LocationService' do
       
       result = LocationService.get_zip_codes(zip_code, radius)
 
-      expect(result[:zip_codes]).to eq('')
+      expect(result[:zip_codes]).to eq(nil)
       expect(result[:error_code]).to eq(404)
       expect(result[:error_msg]).to eq("Zip code \"#{zip_code}\" not found.")
     end
