@@ -12,11 +12,17 @@ All of the repositories that make up this project can be found [here](https://gi
 
 ## Table of Contents
   - [Design](#design)
+  - [Schema](#schema)
   - [Setup](#setup)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
   - [Authors](#authors)
 
 ### Design
 
+### Schema 
+
+<img width="717" alt="Garden-Share-BE-Schema" src="https://user-images.githubusercontent.com/63476564/109400683-054c6200-7918-11eb-9f25-f02b141ad0a5.png">
 
 ### Setup
 #### Prerequisites
@@ -36,8 +42,34 @@ We also use `PostgreSQL` as our database.
 ##### Local Repo Setup
 1. Fork & Clone Repo
 2. Run `bundle install`.
-3. Setup database: `rails db:create`.
+3. From the command line, install gems and set up your DB:
+    * `bundle install`
+    * `rails db:create`
+    * `rails db:migrate`
+4. Install Figaro with `bundle exec figaro install` to create an application.yml file locally
+5. Add `ZIPCODE_MICROSERVICE_BASE_URL: 'https://garden-share-be.herokuapp.com/'` to the application.yml file
 
+### Testing 
+
+This app utilizes [Travis CI](travis-ci.com) for integrated testing.
+
+Run the test suite with `bundle exec rspec`
+
+#### The Garden Share BE utilizes the following gems and libraries in testing:
+ 
+- [WebMock](https://github.com/bblimke/webmock)
+- [FactoryBot](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md)
+- [Faker](https://github.com/faker-ruby/faker)
+- [ShouldaMatchers](https://github.com/thoughtbot/shoulda-matchers)
+- [SimpleCov](https://github.com/simplecov-ruby/simplecov)
+
+### Deployment
+
+For local deployment run your development server with `rails s` and visit [localhost:3000](http://localhost:3000) to see the app in action.
+
+For accessing the microservice you can run `rails s` and visit [localhost:3001](http://localhost:3001) and include `ZIPCODE_MICROSERVICE_BASE_URL: 'http://localhost:3001/'` in the application.yml file
+
+[Garden Share](https://garden-share-be.herokuapp.com/) is deployed remotely via Heroku
 
 ### Authors
   - **Aaron Townsend** - *Turing Student* - [GitHub Profile](https://github.com/atownse) - [LinkedIn](https://www.linkedin.com/in/aaron-townsend-667604176/)
