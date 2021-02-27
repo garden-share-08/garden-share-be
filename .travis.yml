@@ -15,3 +15,5 @@ deploy:
     repo: garden-share-08/garden-share-be
     branch: main
   skip_cleanup: 'true'
+  run: 
+  - bundle exec bundle 
