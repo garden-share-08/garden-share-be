@@ -93,4 +93,42 @@ RSpec.describe 'backend can return all listings' do
     expect(result[:data][:getListings][:listings]).to be_empty
     expect(result[:data][:getListings][:error][0]).to eq('There are no recent produce listings')
   end
+
+  it 'filtered by their zip code and radius' do 
+    zip_code = "80017"
+    zip_codes = File.read('spec/fixtures/get_zip_codes.json')
+    radius = 5
+    
+    show_listing1 = create(:listing, zip_code: "80015", date_harvested: DateTime.now(), produce_name: 'Apples')
+    show_listing2 = create(:listing, zip_code: "80041", date_harvested: DateTime.now(), produce_name: 'Bananas')
+    show_listing3 = create(:listing, zip_code: "80013", date_harvested: DateTime.now(), produce_name: 'Carrots')
+    no_show_listing1 = create(:listing, zip_code: "80219", date_harvested: DateTime.now(), produce_name: 'Dates')
+    no_show_listing2 = create(:listing, zip_code: "45505", date_harvested: DateTime.now(), produce_name: 'Grapes')
+
+    stub_request(:get, "https://garden-share-be.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
+        .to_return(status: 200, body: zip_codes, headers: {})
+
+    query_string = <<-GRAPHQL
+      query {
+        getListings(zipCode: "#{zip_code}", radius: #{radius}) {
+          listings
+          error
+        }
+      }
+    GRAPHQL
+
+    post graphql_path, params: { query: query_string }
+    
+    result = JSON.parse(response.body, symbolize_names: true)
+    listings = result[:data][:getListings][:listings]
+
+    expect(listings.count).to eq(3)
+    
+    expect(listings[:Apples][0][:id]).to eq(show_listing1.id)
+    expect(listings[:Bananas][0][:id]).to eq(show_listing2.id)
+    expect(listings[:Carrots][0][:id]).to eq(show_listing3.id)
+    
+    expect(listings[:Dates]).to be_nil
+    expect(listings[:Grapes]).to be_nil
+  end
 end

@@ -3,6 +3,7 @@ require 'simplecov'
 SimpleCov.start
 SimpleCov.add_filter ['app/controllers/graphql_controller.rb', 'app/graphql/garden_share_be_schema.rb', 'spec/', 'config/']
 
+require 'webmock/rspec'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
