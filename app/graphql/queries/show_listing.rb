@@ -2,7 +2,7 @@ module Queries
   class ShowListing < Queries::BaseQuery
     description "Show a posted listing" 
 
-    argument :id, Integer, required: true 
+    argument :id, Integer, required: null 
 
     field :listing, Types::ListingType, null: true 
     field :error, [String], null: false 
