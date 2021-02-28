@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'backend returns a user\'s listings and its offers' do 
   it 'with a user id' do 
     user = create(:user)
+    user2 = create(:user)
     listing_1, listing_2, listing_3 = create_list(:listing_with_offers, 2, user: user, offer_count: 3)
     other_user_listings = create_list(:listing_with_offers, 3)
 
@@ -144,16 +145,19 @@ RSpec.describe 'backend returns a user\'s listings and its offers' do
     expect(error[0]).to eq("Couldn't find Listings for User with 'id'=#{user.id}")
   end
 
-  it 'includes only offers with a pending or accepted status in the listing' do 
+  it 'includes only offers that are pending, accepted, or declined status in the listing' do 
     user = create(:user)
     listing = create(:listing, user: user)
+    listing2 = create(:listing, user: user)
     pending_offer = create(:offer, status: 'pending', listing: listing)
     accepted_offer = create(:offer, status: 'accepted', listing: listing)
     declined_offer = create(:offer, status: 'declined', listing: listing)
 
-    other_listing = create(:listing_with_offers, offer_count: 2)
+    declined_offer2 = create(:offer, status: 'declined', listing: listing2)
 
-    query_string = <<-GRAPHQL
+    other_listing = create(:listing_with_offers, offer_count: 4)
+
+    query_string = <<-GRAPHQL 
       query {
         getUserListings(id: #{user.id}) {
           listings {
@@ -179,11 +183,47 @@ RSpec.describe 'backend returns a user\'s listings and its offers' do
 
     result = JSON.parse(response.body, symbolize_names: true)
 
-    offers = result[:data][:getUserListings][:listings][0][:offers]
+    listings = result[:data][:getUserListings][:listings]
+    offers = listings[0][:offers]
     error = result[:data][:getUserListings][:error]
 
-    expect(offers.count).to eq(2)
-    expect(offers[0][:status]).to_not eq('declined')
-    expect(offers[-1][:status]).to_not eq('declined')
+    expect(listings.count).to eq(2)
+    expect(offers.count).to eq(3)
+  end
+
+  it 'returns the most recent listings first' do 
+    user = create(:user)
+    listing2 = create(:listing, user: user, updated_at: (DateTime.now() - 1.days))
+    listing1 = create(:listing, user: user, updated_at: DateTime.now())
+    listing4 = create(:listing, user: user, updated_at: (DateTime.now() - 3.days))
+    listing3 = create(:listing, user: user, updated_at: (DateTime.now() - 2.days))
+
+    query_string = <<-GRAPHQL 
+      query {
+        getUserListings(id: #{user.id}) {
+          listings {
+            id
+            updatedAt
+          }
+          error
+        }
+      }
+    GRAPHQL
+
+    post graphql_path, params: { query: query_string }
+    
+    result = JSON.parse(response.body, symbolize_names: true)
+
+    listings = result[:data][:getUserListings][:listings]
+    
+    first_listing = listings[0]
+    second_listing = listings[1]
+    third_listing = listings[2]
+    fourth_listing = listings[3]
+
+    expect(first_listing[:id]).to eq(listing1.id)
+    expect(second_listing[:id]).to eq(listing2.id)
+    expect(third_listing[:id]).to eq(listing3.id)
+    expect(fourth_listing[:id]).to eq(listing4.id)
   end
 end
