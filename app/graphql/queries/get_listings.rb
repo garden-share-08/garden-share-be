@@ -18,17 +18,19 @@ module Queries
       three_days_ago = DateTime.now - 3.days
       zip_codes, error_msg = get_zip_codes(args) if args
       
-      if zip_codes.nil? || zip_codes.empty?
-        listings = Listing.where('date_harvested >= ?', three_days_ago)
+      if args.nil?
+        listings = Listing.where('updated_at >= ?', three_days_ago)
                           .order('produce_name')
                           .group_by(&:produce_name)
 
-        error << 'There are no recent produce listings' if listings.empty? && error_msg.nil?
-        error << error_msg if error_msg
+        error << 'There are no recent produce listings' if listings.empty?
       else 
-        listings = Listing.where('date_harvested >= ? AND zip_code IN (?)', three_days_ago, zip_codes)
+        listings = Listing.where('updated_at >= ? AND zip_code IN (?)', three_days_ago, zip_codes)
                           .order('produce_name')
                           .group_by(&:produce_name)
+
+        error << 'There are no recent produce listings' if listings.empty? && !error_msg
+        error << error_msg if error_msg
       end
       {
         listings: listings, 

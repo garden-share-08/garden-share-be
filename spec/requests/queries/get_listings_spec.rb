@@ -50,8 +50,8 @@ RSpec.describe 'backend can return all listings' do
   end
 
   it 'that have been posted for no longer than 72 hours' do 
-    apples_1, apples_2 = create_list(:listing, 2, produce_name: 'apples', date_harvested: (DateTime.now - 4.days))
-    peppers_1, peppers_2, peppers_3 = create_list(:listing, 3, produce_name: 'peppers', date_harvested: DateTime.now)
+    apples_1, apples_2 = create_list(:listing, 2, produce_name: 'apples', updated_at: (DateTime.now - 4.days))
+    peppers_1, peppers_2, peppers_3 = create_list(:listing, 3, produce_name: 'peppers', updated_at: DateTime.now)
 
     query_string = <<-GRAPHQL
       query {
@@ -75,7 +75,7 @@ RSpec.describe 'backend can return all listings' do
   end
 
   it 'returns nil when there are no recent listings' do 
-    apples_1, apples_2 = create_list(:listing, 2, produce_name: 'apples', date_harvested: (DateTime.now - 4.days))
+    apples_1, apples_2 = create_list(:listing, 2, produce_name: 'apples', updated_at: (DateTime.now - 4.days))
 
     query_string = <<-GRAPHQL
       query {
@@ -105,7 +105,7 @@ RSpec.describe 'backend can return all listings' do
     no_show_listing1 = create(:listing, zip_code: "80219", date_harvested: DateTime.now(), produce_name: 'Dates')
     no_show_listing2 = create(:listing, zip_code: "45505", date_harvested: DateTime.now(), produce_name: 'Grapes')
 
-    stub_request(:get, "https://garden-share-be.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
+    stub_request(:get, "https://gardeen-location-microservice.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
         .to_return(status: 200, body: zip_codes, headers: {})
 
     query_string = <<-GRAPHQL
