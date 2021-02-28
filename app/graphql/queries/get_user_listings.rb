@@ -12,8 +12,8 @@ module Queries
       begin
         listings = Listing.includes(offers: :user)
                           .where('listings.user_id = ?', args[:id])
-                          .where.not(offers: {status: 'declined'})
-                          
+                          .order('listings.updated_at DESC')
+
         error << "Couldn't find Listings for User with 'id'=#{args[:id]}" if listings.empty?
       rescue 
         error << 'Something went wrong when processing your request'
