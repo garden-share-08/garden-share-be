@@ -184,7 +184,7 @@ RSpec.describe 'backend returns a user\'s listings and its offers' do
     result = JSON.parse(response.body, symbolize_names: true)
 
     listings = result[:data][:getUserListings][:listings]
-    offers = listings[0][:offers]
+    offers = listings[1][:offers]
     error = result[:data][:getUserListings][:error]
 
     expect(listings.count).to eq(2)
@@ -215,7 +215,7 @@ RSpec.describe 'backend returns a user\'s listings and its offers' do
     result = JSON.parse(response.body, symbolize_names: true)
 
     listings = result[:data][:getUserListings][:listings]
-    
+
     first_listing = listings[0]
     second_listing = listings[1]
     third_listing = listings[2]
