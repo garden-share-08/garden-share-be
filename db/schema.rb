@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_231453) do
+ActiveRecord::Schema.define(version: 2021_02_28_011819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_231453) do
     t.integer "quantity"
     t.string "unit"
     t.string "date_harvested"
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_listings_on_user_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_231453) do
     t.integer "quantity"
     t.string "unit"
     t.string "date_harvested"
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_offers_on_listing_id"
