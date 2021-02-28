@@ -105,7 +105,7 @@ RSpec.describe 'backend can return all listings' do
     no_show_listing1 = create(:listing, zip_code: "80219", date_harvested: DateTime.now(), produce_name: 'Dates')
     no_show_listing2 = create(:listing, zip_code: "45505", date_harvested: DateTime.now(), produce_name: 'Grapes')
 
-    stub_request(:get, "https://garden-share-be.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
+    stub_request(:get, "https://gardeen-location-microservice.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
         .to_return(status: 200, body: zip_codes, headers: {})
 
     query_string = <<-GRAPHQL

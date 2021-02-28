@@ -8,7 +8,7 @@ RSpec.describe 'LocationService' do
       zip_code = "80017"
       radius = 5
 
-      stub_request(:get, "https://garden-share-be.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
+      stub_request(:get, "https://gardeen-location-microservice.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
         .to_return(status: 200, body: zip_codes, headers: {})
       
       expected_zip_codes = ["80015","80013","80014","80040","80041","80042","80044","80046","80047","80017","80247","80012","80011","80045"]
@@ -30,7 +30,7 @@ RSpec.describe 'LocationService' do
         error_msg: "Zip code \"#{zip_code}\" not found."
       }
 
-      stub_request(:get, "https://garden-share-be.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
+      stub_request(:get, "https://gardeen-location-microservice.herokuapp.com/zipcodes/#{zip_code}/#{radius}")
         .to_return(status: 404, body: error.to_json, headers: {})
       
       result = LocationService.get_zip_codes(zip_code, radius)
