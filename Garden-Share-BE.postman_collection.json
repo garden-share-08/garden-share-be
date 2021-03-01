@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "975f5ddc-00ee-4aab-a6e1-5020f8f8bc80",
+		"name": "Garden-Share-BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "getAllProduce",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    getAllProduce {\n        produce {\n            name\n            image\n        }\n        error\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "query {\n    getAllProduce {\n        produce {\n            name\n            image\n        }\n        error\n    }\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "getProduceByName",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    getProduceByName(name: \"Tomato\") {\n        produce {\n            name\n            image\n        }\n        error\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "query {\n    getProduceByName(name: \"Tomato\") {\n        produce {\n            name\n            image\n        }\n        error\n    }\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserOffers(user id)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n        getUserOffers(id: 1) {\n          listings {\n            id \n            produceName \n            produceType\n            quantity\n            unit\n            dateHarvested\n            updatedAt\n            user {\n              id \n              firstName\n            }\n            offers {\n              id\n              produceName\n              produceType\n              quantity\n              unit \n              dateHarvested\n              updatedAt\n              user {\n                id\n                firstName\n              }\n            }\n          }\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "query {\n        getUserOffers(id: 1) {\n          listings {\n            id \n            produceName \n            produceType\n            quantity\n            unit\n            dateHarvested\n            updatedAt\n            user {\n              id \n              firstName\n            }\n            offers {\n              id\n              produceName\n              produceType\n              quantity\n              unit \n              dateHarvested\n              updatedAt\n              user {\n                id\n                firstName\n              }\n            }\n          }\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserListings(user id)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n        getUserListings(id: 1) {\n          listings {\n            user {\n              firstName\n            }\n            produceName\n            produceType\n            description\n            quantity \n            unit\n            zipCode\n            status\n            updatedAt\n            offers {\n              user {\n                firstName\n                lastName\n                email\n              }\n              produceName\n              produceType\n              description\n              quantity\n              unit\n              status\n              updatedAt\n            }\n          }\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "query {\n        getUserListings(id: 1) {\n          listings {\n            user {\n              firstName\n            }\n            produceName\n            produceType\n            description\n            quantity \n            unit\n            zipCode\n            status\n            updatedAt\n            offers {\n              user {\n                firstName\n                lastName\n                email\n              }\n              produceName\n              produceType\n              description\n              quantity\n              unit\n              status\n              updatedAt\n            }\n          }\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "getListings(zipCode, radius)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n        getListings(zipCode: \"23139\", radius: 1) {\n          listings\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "query {\n        getListings(zipCode: \"23139\", radius: 1) {\n          listings\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "getListingStatus(id)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n      getListingStatus(id: 1) {\n        listing {\n          id \n          status\n        }\n        error\n      }\n    }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "query {\n      getListingStatus(id: 1) {\n        listing {\n          id \n          status\n        }\n        error\n      }\n    }"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mutations",
+			"item": [
+				{
+					"name": "deleteOffer(input: id)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n        deleteOffer(input: {id: 1}) {\n          offer {\n            id\n          }\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "mutation {\n        deleteOffer(input: {id: 1}) {\n          offer {\n            id\n          }\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteListing(input: id)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n        deleteListing(input: {\n          id: 1\n        }) {\n          listing {\n            id\n          }\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "mutation {\n        deleteListing(input: {\n          id: #{listing.id}\n        }) {\n          listing {\n            id\n          }\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "declineOffer(input: offer_id)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n      declineOffer(input: {\n        id: 1}) {\n        listing {\n          id\n          status\n          offers {\n            id\n            status\n          }\n        }\n        error\n      }\n    }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "mutation {\n      declineOffer(input: {\n        id: #{offer.id}}) {\n        listing {\n          id\n          status\n          offers {\n            id\n            status\n          }\n        }\n        error\n      }\n    }"
+					},
+					"response": []
+				},
+				{
+					"name": "declineOffer(input: {firstName: first name, lastName: last name, email: email})",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n       createUser(input: {firstName: \"Elva\", lastName: \"Murphy\", email: \"murphy.elva@orn-franecki.name\"}) {\n          user {\n            id\n            firstName\n            lastName\n            email\n          }\n          message\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "mutation {\n       createUser(input: {firstName: \"Elva\", lastName: \"Murphy\", email: \"murphy.elva@orn-franecki.name\"}) {\n          user {\n            id\n            firstName\n            lastName\n            email\n          }\n          message\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "createOffer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n       createOffer(input: {\n        userId: 1,\n        listingId: 1,\n        produceName: \"#{offer.produce_name}\",\n        produceType: \"#{offer.produce_type}\",\n        description: \"#{offer.description}\",\n        quantity: #{offer.quantity},\n        unit: \"#{offer.unit}\",\n        dateHarvested: \"#{offer.date_harvested}\"}) {\n          offer {\n            produceName\n            produceType\n            description\n            quantity\n            unit\n            dateHarvested\n            createdAt\n          }\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "mutation {\n       createOffer(input: {\n        userId: #{buyer.id},\n        listingId: #{listing.id},\n        produceName: \"#{offer.produce_name}\",\n        produceType: \"#{offer.produce_type}\",\n        description: \"#{offer.description}\",\n        quantity: #{offer.quantity},\n        unit: \"#{offer.unit}\",\n        dateHarvested: \"#{offer.date_harvested}\"}) {\n          offer {\n            produceName\n            produceType\n            description\n            quantity\n            unit\n            dateHarvested\n            createdAt\n          }\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "createListing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n       createListing(input: {\n        userId: #{user.id},\n        zipCode: \"#{listing.zip_code}\",\n        produceName: \"#{listing.produce_name}\",\n        produceType: \"#{listing.produce_type}\",\n        description: \"#{listing.description}\",\n        quantity: #{listing.quantity},\n        unit: \"#{listing.unit}\",\n        dateHarvested: \"#{listing.date_harvested}\"}) {\n          listing {\n            zipCode\n            produceName\n            produceType\n            description\n            quantity\n            unit\n            dateHarvested\n            createdAt\n          }\n          error\n        }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "mutation {\n       createListing(input: {\n        userId: #{user.id},\n        zipCode: \"#{listing.zip_code}\",\n        produceName: \"#{listing.produce_name}\",\n        produceType: \"#{listing.produce_type}\",\n        description: \"#{listing.description}\",\n        quantity: #{listing.quantity},\n        unit: \"#{listing.unit}\",\n        dateHarvested: \"#{listing.date_harvested}\"}) {\n          listing {\n            zipCode\n            produceName\n            produceType\n            description\n            quantity\n            unit\n            dateHarvested\n            createdAt\n          }\n          error\n        }\n      }"
+					},
+					"response": []
+				},
+				{
+					"name": "acceptOffer(input: {id: offer.id})",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n      acceptOffer(input: {\n        id: 1}) {\n        listing {\n          user {\n            id\n          }\n          id\n          status\n          offers {\n            id\n            status\n          }\n        }\n        error\n      }\n    }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "mutation {\n      acceptOffer(input: {\n        id: #{offer.id}}) {\n        listing {\n          user {\n            id\n          }\n          id\n          status\n          offers {\n            id\n            status\n          }\n        }\n        error\n      }\n    }"
+					},
+					"response": []
+				},
+				{
+					"name": "acceptOffer(input: {id: offer.id})",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": " mutation {\n        updateListing(input: {\n          id: 1,\n          quantity: 1,\n          description: \"LETGO\"}) {\n            listing {\n              id \n              produceName\n              produceType\n              quantity\n              description\n            }\n            error\n          }\n      }",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						},
+						"description": " mutation {\n        updateListing(input: {\n          id: #{listing.id},\n          quantity: #{new_quantity},\n          description: \"#{new_description}\"}) {\n            listing {\n              id \n              produceName\n              produceType\n              quantity\n              description\n            }\n            error\n          }\n      }"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
