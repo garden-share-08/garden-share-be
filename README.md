@@ -20,6 +20,16 @@ All of the repositories that make up this project can be found [here](https://gi
 
 ### Design
 
+Garden-Share utilizes a service-orriented architecture to ensure future scalability.
+
+The back-end is written primarily in Ruby on Rails/GrahphQL and deployed via [Heroku](https://garden-share-be.herokuapp.com/)
+
+The front-end is written primarily in JavaScript/Node.js and is deployed via [Heroku](FE URL Needed!)
+
+The microservice is written primarily in Python/Flask and is deployed via [Heroku](https://gardeen-location-microservice.herokuapp.com/)
+
+To see all available endpoints the `Garden-Share-BE.postman_collection.json` file (located in the root directory) can be imported into Postman.
+
 ### Schema 
 
 <img width="717" alt="Garden-Share-BE-Schema" src="https://user-images.githubusercontent.com/63476564/109400683-054c6200-7918-11eb-9f25-f02b141ad0a5.png">
