@@ -38,9 +38,9 @@ To see all available endpoints the `Garden-Share-BE.postman_collection.json` fil
 #### Prerequisites
 These setup instructions are for Mac OS.
 
-![](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a) ![](https://img.shields.io/badge/Ruby-2.5.3-orange)
-
 This project requires the use of `Ruby 2.5.3` and `Rails 5.2.4.3`.
+
+![](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a) ![](https://img.shields.io/badge/Ruby-2.5.3-orange)
 
 We also use `PostgreSQL` as our database.
 
