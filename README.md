@@ -1,6 +1,3 @@
-<p align='center'>
-  <img width="460" height="300" src="https://user-images.githubusercontent.com/60626984/110033190-4ec0f680-7cf6-11eb-9a45-16e7ee404522.png>
-</p>
 ![Garden Share](https://user-images.githubusercontent.com/60626984/110033190-4ec0f680-7cf6-11eb-9a45-16e7ee404522.png)
 
 # Garden-Share: BackEnd
