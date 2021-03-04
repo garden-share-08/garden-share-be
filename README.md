@@ -63,7 +63,7 @@ We also use `PostgreSQL` as our database.
 4. Install Figaro with `bundle exec figaro install` to create an application.yml file locally
 5. Add `ZIPCODE_MICROSERVICE_BASE_URL: 'https://garden-share-be.herokuapp.com/'` to the application.yml file
 
-### Testing [![Build Status](https://travis-ci.org/garden-share-08/garden-share-be.png?branch=main)](https://travis-ci.org/garden-share-08/garden-share-be)
+### Testing [![Build Status](https://travis-ci.com/garden-share-08/garden-share-be.png?branch=main)](https://travis-ci.com/garden-share-08/garden-share-be)
 
 This app utilizes [Travis CI](travis-ci.com) for integrated testing.
 
