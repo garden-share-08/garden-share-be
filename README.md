@@ -37,8 +37,11 @@ To see all available endpoints the `Garden-Share-BE.postman_collection.json` fil
 ### Setup
 #### Prerequisites
 These setup instructions are for Mac OS.
+
 ![](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
+
 ![](https://img.shields.io/badge/Ruby-2.5.3-orange)
+
 This project requires the use of `Ruby 2.5.3` and `Rails 5.2.4.3`.
 We also use `PostgreSQL` as our database.
 
@@ -60,7 +63,7 @@ We also use `PostgreSQL` as our database.
 4. Install Figaro with `bundle exec figaro install` to create an application.yml file locally
 5. Add `ZIPCODE_MICROSERVICE_BASE_URL: 'https://garden-share-be.herokuapp.com/'` to the application.yml file
 
-### Testing [![Build Status](https://travis-ci.org/{garden-share-08}/{garden-share-be}.png?branch=main)](https://travis-ci.org/{garden-share-08}/{garden-share-be})
+### Testing [![Build Status](https://travis-ci.org/garden-share-08/garden-share-be.png?branch=main)](https://travis-ci.org/garden-share-08/garden-share-be)
 
 This app utilizes [Travis CI](travis-ci.com) for integrated testing.
 
