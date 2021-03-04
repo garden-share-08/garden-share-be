@@ -43,6 +43,9 @@ These setup instructions are for Mac OS.
 ![](https://img.shields.io/badge/Ruby-2.5.3-orange)
 
 This project requires the use of `Ruby 2.5.3` and `Rails 5.2.4.3`.
+
+<img alt="Postgres" src ="https://img.shields.io/badge/postgres-%23316192.svg?&style=for-the-badge&logo=postgresql&logoColor=white"/>
+
 We also use `PostgreSQL` as our database.
 
 ##### Install Necessary Programs
