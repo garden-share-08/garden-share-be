@@ -1,3 +1,6 @@
+![](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a) ![](https://img.shields.io/badge/Ruby-2.5.3-orange) <img alt="Postgres" src ="https://img.shields.io/badge/postgres-%23316192.svg?&style=for-the-badge&logo=postgresql&logoColor=white"/> [![Build Status](https://travis-ci.com/garden-share-08/garden-share-be.png?branch=main)](https://travis-ci.com/garden-share-08/garden-share-be) ![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)
+
+
 ![Garden Share](https://user-images.githubusercontent.com/60626984/110033190-4ec0f680-7cf6-11eb-9a45-16e7ee404522.png)
 
 # Garden-Share: BackEnd
