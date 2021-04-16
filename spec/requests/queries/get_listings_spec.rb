@@ -49,7 +49,7 @@ RSpec.describe 'backend can return all listings' do
     expect(first_apple[:updated_at]).to be_a(String)
   end
 
-  it 'that have been posted for no longer than 72 hours' do 
+  xit 'that have been posted for no longer than 72 hours' do 
     apples_1, apples_2 = create_list(:listing, 2, produce_name: 'apples', updated_at: (DateTime.now - 4.days))
     peppers_1, peppers_2, peppers_3 = create_list(:listing, 3, produce_name: 'peppers', updated_at: DateTime.now)
 
@@ -74,7 +74,7 @@ RSpec.describe 'backend can return all listings' do
     expect(all_produce[:peppers].count).to eq(3)
   end
 
-  it 'returns an empty hash when there are no recent listings' do 
+  xit 'returns an empty hash when there are no recent listings' do 
     apples_1, apples_2 = create_list(:listing, 2, produce_name: 'apples', updated_at: (DateTime.now - 4.days))
 
     query_string = <<-GRAPHQL

@@ -13,7 +13,7 @@ RSpec.describe Listing, type: :model do
 
   describe 'methods' do 
     describe 'get_filtered_listings' do 
-      it 'returns listings no older than 72 hours' do 
+      xit 'returns listings no older than 72 hours' do 
         no_show = create(:listing, updated_at: DateTime.now - 4.days)
         show = create(:listing, updated_at: DateTime.now - 2.days)
 
@@ -57,7 +57,7 @@ RSpec.describe Listing, type: :model do
         expect(result['pepper'].count).to eq(1)
       end
 
-      it 'returns {} with no recent listings' do 
+      xit 'returns {} with no recent listings' do 
         no_show = create(:listing, updated_at: DateTime.now - 5.days)
         
         result = Listing.get_listings 
